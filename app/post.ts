@@ -56,3 +56,16 @@ export const getPost = async (slug: string) => {
   const html = marked(body)
   return { slug, title: attributes.title, html }
 }
+
+type NewPost = {
+  slug: string
+  title: string
+  markdown: string
+}
+
+export async function createPost({ slug, title, markdown }: NewPost) {
+  const content = `---\ntitle: ${title}\n---\n\n${markdown}`
+
+  await fs.writeFile(path.join(postsPath, `${slug}.md`), content)
+  return getPost(slug)
+}

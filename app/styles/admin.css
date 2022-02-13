@@ -1,0 +1,13 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin em {
+  display: block;
+  color: red;
+}
+
+.admin input {
+  display: block;
+}
